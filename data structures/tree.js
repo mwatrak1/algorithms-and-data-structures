@@ -119,7 +119,6 @@ class BinarySearchTree{
         // makes it possible to recostruct a tree
 
         var values = []
-        var queue = []
         var current = this.root
         
         function traverse(current, values){
@@ -141,7 +140,6 @@ class BinarySearchTree{
         // starting from children and going up to parents
 
         var values = []
-        var queue = []
         var current = this.root
         
         function traverse(current, values){
@@ -164,7 +162,6 @@ class BinarySearchTree{
     // great when we need sorted data
 
         var values = []
-        var queue = []
         var current = this.root
         
         function traverse(current, values){

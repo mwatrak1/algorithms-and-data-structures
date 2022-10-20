@@ -6,6 +6,7 @@ class Node {
 }
 
 class PriorityQueue {
+    // based on a binary heap
     constructor(){
         this.values = []
     }

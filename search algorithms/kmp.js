@@ -1,3 +1,5 @@
+// TODO: add prefix table
+
 function knp(text, pattern) {
   let currentPatternIndexHit = 0;
   const patternLength = pattern.length;
@@ -11,6 +13,7 @@ function knp(text, pattern) {
     if (text[i] === pattern[currentPatternIndexHit]) {
       currentPatternIndexHit++;
     } else {
+      i = i - currentPatternIndexHit;
       currentPatternIndexHit = 0;
     }
 
@@ -22,4 +25,4 @@ function knp(text, pattern) {
   return -1;
 }
 
-console.log(knp("Ala ma kota", "kot"));
+console.log(knp("aaaaaaab", "aaab"));

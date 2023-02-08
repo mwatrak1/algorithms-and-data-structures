@@ -1,15 +1,21 @@
-function match(word1, word2) {
-  for (var i = 0; i < word1.length; i++) {
-    var count = 0;
-    var howmany;
+function match(text, pattern) {
 
-    for (var j = 0; j < word2.length; i++) {
-      if (word2[j] == word1[i + j]) count++;
+  for (var i = 0; i < text.length; i++) {
+    var count = 0;
+
+    for (var j = 0; j < pattern.length; j++) {
+      if (pattern[j] == text[i + j]) {
+        count++;
+      }
     }
-    if (count == word2.length) howmany++;
+    if (count == pattern.length) {
+      return i;
+    }
     count = 0;
   }
-  console.log("Word found in a phrase " + howmany + " times");
+  
+  return -1;
 }
 
-match("Ala ma kota", "kot");
+console.log(match("Ala ma kota", "kot"));
+

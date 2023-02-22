@@ -64,7 +64,7 @@ class HuffmanTree {
         nodeFrequencyQueue.sort((a, b) => a.frequency > b.frequency ? -1 : 1);
       }
 
-      if (smallestFrequencyNode) {
+      if (smallestFrequencyNode && !anotherSmallestFrequencyNode) {
         this.head = smallestFrequencyNode;
       }
 

@@ -5,7 +5,7 @@ class Node {
   }
 }
 
-class SinglyLinkList {
+class SinglyLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
@@ -102,16 +102,21 @@ class SinglyLinkList {
   insert(index, value) {
     if (index === this.length) return !!this.push(value);
     if (index === 0) this.unshift(value);
-    return true;
+
     if (index > 0 && index < this.length) {
       var previous = this.find(index - 1);
       var current = previous.next;
+
       var newNode = new Node(value);
+      
       previous.next = newNode;
       previous.next.next = current;
+      
       this.length++;
       return true;
-    } else return false;
+    } else {
+      return false;
+    }
   }
 
   remove(index) {
@@ -138,7 +143,6 @@ class SinglyLinkList {
     var next;
     var prev = null;
 
-    this.head = this.tail;
 
     for (var i = 0; i < this.length; i++) {
       next = node.next;
@@ -151,12 +155,12 @@ class SinglyLinkList {
   }
 }
 
-var list = new SinglyLinkList();
-list.push(1);
-list.push("halo");
-list.push("siema");
-list.push(8);
+const linkedList = new SinglyLinkedList();
+linkedList.push(1);
+linkedList.push(2);
+linkedList.push(4);
+linkedList.push(8);
 
-list.reverse();
+linkedList.reverse();
 
-console.log(list.find(2));
+console.log(linkedList);

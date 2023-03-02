@@ -1,10 +1,17 @@
 class TrieNode {
   children: Map<string, TrieNode> = new Map<string, TrieNode>([]);
   parent: TrieNode | null;
+  // signifies if given node completes one of the inserted words
   completesWord: boolean;
+
+  constructor(parent: TrieNode | null = null, completesWord: boolean = false) {
+    this.parent = parent;
+    this.completesWord = completesWord;
+  }
 }
 
 class TrieNodeChild {
+  // currently formed word
   word: string;
   node: TrieNode;
 
@@ -34,9 +41,7 @@ class PrefixTrie {
 
       let nextNode = currentNode.children.get(prefixElement);
       if (!nextNode) {
-        nextNode = new TrieNode();
-        nextNode.parent = currentNode;
-        nextNode.completesWord = false;
+        nextNode = new TrieNode(currentNode);
         currentNode.children.set(prefixElement, nextNode);
       }
 
@@ -85,7 +90,6 @@ class PrefixTrie {
 
       let currentWord = triePrefixExtensionNode.word;
       currentNode = triePrefixExtensionNode.node;
-      console.log(currentNode)
 
       if (currentNode.children.size) {
         if (currentNode.completesWord) {
@@ -136,6 +140,7 @@ class PrefixTrie {
     return true;
   }
 
+  // searches for the longest substring of a prefix that by default also is a complete word
   findSubstringOf(prefix: string, complete: boolean = true): string {
     if (!prefix.length) {
         return '';
@@ -174,5 +179,5 @@ prefixTrie.insert('tomali');
 prefixTrie.insert('tomas');
 console.log(prefixTrie.includes('tomato'));
 console.log(prefixTrie.includes('to'));
-console.log(prefixTrie.findSubstringOf('potatoes'))
+console.log(prefixTrie.findSubstringOf('tomatoes'))
 console.log(prefixTrie.search('to'));
